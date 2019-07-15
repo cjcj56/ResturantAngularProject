@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
-import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class RecipesService {
 
     recipesUpdate = new Subject<Recipe[]>();
@@ -20,7 +20,7 @@ export class RecipesService {
             new Ingredient('Flour', 1),
             new Ingredient('Bread crumbs', 1),
             new Ingredient('Sweet chili pepper sauce', 1),
-            new Ingredient('Olive oil', 1),
+            new Ingredient('Olive Oil', 1),
             new Ingredient('Paprika', 1),
             new Ingredient('Garlic', 1)
           ]
@@ -30,7 +30,7 @@ export class RecipesService {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hummus_from_The_Nile.jpg/1024px-Hummus_from_The_Nile.jpg',
           [
             new Ingredient('Hummus beans', 1),
-            new Ingredient('Olive oil', 1),
+            new Ingredient('Olive Oil', 1),
             new Ingredient('Tahini', 1),
             new Ingredient('Garlic', 1),
             new Ingredient('Salt', 1)
@@ -71,6 +71,11 @@ export class RecipesService {
 
       updateRecipe(recipe: Recipe, idx: number) {
         this.recipes[idx] = recipe;
+        this.recipesUpdate.next(this.getRecipes());
+      }
+
+      deleteRecipe(idx: number) {
+        this.recipes.splice(idx, 1);
         this.recipesUpdate.next(this.getRecipes());
       }
 }

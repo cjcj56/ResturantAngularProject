@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+
 import { RecipesService } from '../recipes.service';
 import { Recipe } from '../recipe.model';
 
@@ -16,14 +17,15 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
   recipeId: number;
 
-  constructor(private route: ActivatedRoute, private recipesService: RecipesService) {}
+  constructor(private route: ActivatedRoute, private recipesService: RecipesService, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.recipeId = params['id'];
-        this.isNew = params['id'] == null;
-        this.isNew ? this.initForm(new Recipe('', '', '', [])) : this.initForm(this.recipesService.getRecipe(+params['id']));
+        const idParamName = 'id';
+        this.recipeId = params[idParamName];
+        this.isNew = params[idParamName] == null;
+        this.isNew ? this.initForm(new Recipe('', '', '', [])) : this.initForm(this.recipesService.getRecipe(+params[idParamName]));
       }
     );
   }
@@ -32,7 +34,7 @@ export class RecipeEditComponent implements OnInit {
     const recipeIngredients = new FormArray([]);
 
     if (recipe.ingredients) {
-      for (let ingredient of recipe.ingredients) {
+      for (const ingredient of recipe.ingredients) {
         recipeIngredients.push(
           new FormGroup({
             'name': new FormControl(ingredient.name, Validators.required),
@@ -63,6 +65,14 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipesService.updateRecipe(this.recipeForm.value, +this.recipeId);
     }
+    this.finishedEditing();
   }
 
+  onDeleteIngredient(idx: number) {
+    (this.recipeForm.get('ingredients') as FormArray).removeAt(idx);
+  }
+
+  finishedEditing() {
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
 }

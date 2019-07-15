@@ -6,10 +6,12 @@ export class ShoppingListService {
     ingredientAdded = new Subject<Ingredient[]>();
     editingShoppingList = new Subject<number>();
     private ingredients: Ingredient[] = [
-        new Ingredient('Ingredient A', Math.ceil(0.1 + Math.random() * 10)),
-        new Ingredient('Ingredient B', Math.ceil(0.1 + Math.random() * 10)),
-        new Ingredient('Ingredient C', Math.ceil(0.1 + Math.random() * 10)),
-        new Ingredient('Ingredient D', Math.ceil(0.1 + Math.random() * 10))
+        new Ingredient('Hummus Beans', 3),
+        new Ingredient('Chicken', 4),
+        new Ingredient('Oranges', 10),
+        new Ingredient('Eggs', 12),
+        new Ingredient('Garlic', 5),
+        new Ingredient('Olive Oil', 1)
       ];
 
       getIngredients() {

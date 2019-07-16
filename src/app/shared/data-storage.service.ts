@@ -4,12 +4,12 @@ import { map } from 'rxjs/operators';
 
 import { RecipesService } from '../recipes/recipes.service';
 import { Recipe } from '../recipes/recipe.model';
-
+import { datastorageInfo } from '../app-data';
 
 @Injectable({providedIn: 'root'})
 export class  DataStorageService {
 
-    private databaseUrl = 'https://resturant-demo-a9d8d.firebaseio.com';
+    private databaseUrl = datastorageInfo.url;
     private recipesUrl: string;
     private shoppinListUrl: string;
 

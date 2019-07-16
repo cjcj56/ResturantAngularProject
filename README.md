@@ -4,6 +4,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 For downloading the required dependencies, navigate to the root folder of the project and run: `npm install`.
 
+Before running the code add the following file: `/src/app/app-data.ts`, with the following content:
+`
+export const datastorageInfo = {
+    url: <firebase url>
+};
+`
+(insert the url to your firebase database as the value of the 'url' key)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

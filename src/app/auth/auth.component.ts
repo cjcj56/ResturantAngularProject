@@ -26,16 +26,13 @@ export class AuthComponent {
     }
 
     this.isLoading = true;
-    console.log(form);
     const email = form.value.email;
     const password = form.value.password;
     const authObservable = this.isLoginMode ? this.authService.signin(email, password) : this.authService.signup(email, password);
     authObservable.subscribe(
       response => {
-        console.log(response);
         this.router.navigate(['/recipes']);
       }, error => {
-        console.log(error);
         this.errorMessage = error;
       }
     );

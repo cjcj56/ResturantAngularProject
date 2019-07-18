@@ -7,12 +7,14 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { IndexGuard } from './shared/index.guard';
 import { RecipesResolverService } from './recipes/recipes-resolver.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.gurad';
+// import { IndexGuard } from './shared/index.guard';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-    { path: 'recipes', component: RecipesComponent, children: [
+    { path: '', redirectTo: '/auth', pathMatch: 'full' },
+    { path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], children: [
         { path: '', component: RecipeStartComponent, pathMatch: 'full' },
         { path: 'new', component: RecipeEditComponent },
         // { path: ':id', component: RecipeDetailComponent, canActivate: [IndexGuard], resolve: [RecipesResolverService] },
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     ] },
     { path: 'shopping-list', component: ShoppingListComponent, children: [
         { path: ':id', component: ShoppingEditComponent }
-    ] }
+    ] },
+    { path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({

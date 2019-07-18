@@ -7,10 +7,15 @@ For downloading the required dependencies, navigate to the root folder of the pr
 Before running the code add the following file: `/src/app/app-data.ts`, with the following content:
 `
 export const datastorageInfo = {
-    url: <firebase url>
+    db: { url: <firebase database url> },
+    auth: {
+        signupUrl: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=',
+        signinUrl: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key='
+    },
+    settings: { apikey: <firebase api-key> }
 };
 `
-(insert the url to your firebase database as the value of the 'url' key)
+(insert the `db.url` to your firebase database and the `settings.apikey` of your firebase account as the appropriate values)
 
 ## Development server
 

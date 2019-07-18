@@ -32,4 +32,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onFetchData() {
     this.dsService.fetchRecipes().subscribe();
   }
+
+  onLogout() {
+    this.authService.signout();
+  }
 }

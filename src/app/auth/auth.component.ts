@@ -18,6 +18,7 @@ export class AuthComponent {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+    this.errorMessage = null;
   }
 
   onSubmit(form: NgForm) {
@@ -39,9 +40,5 @@ export class AuthComponent {
 
     this.isLoading = false;
     form.reset();
-  }
-
-  onLogout() {
-    this.authService.signout();
   }
 }

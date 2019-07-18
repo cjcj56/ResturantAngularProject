@@ -44,9 +44,22 @@ export class RecipesService {
     //         new Ingredient('Oranges', 4)
     //       ]
     //     ),
-    //     new Recipe('test4',
-    //       'test_desc4',
+    //     new Recipe('Chicken Breast in Tahini',
+    //       'Especially yummy chicken breast cooked in tahini sauce!',
     //       'https://www.saltandlavender.com/wp-content/uploads/2018/12/creamy-garlic-chicken-recipe-3-720x1080.jpg',
+    //       [
+    //         new Ingredient('Chicken breast', 2),
+    //         new Ingredient('Tahini', 1),
+    //         new Ingredient('Garlic', 3),
+    //         new Ingredient('Paprika', 1),
+    //         new Ingredient('Pepper', 1),
+    //         new Ingredient('Olive Oil', 1),
+    //         new Ingredient('Sweet Chili Sauce', 1)
+    //       ]
+    //     ),
+    //     new Recipe('Pizza',
+    //       'Yummy, yummy, Y-U-M-M-Y pizza!',
+    //       'https://upload.wikimedia.org/wikipedia/commons/a/ad/Pizza_quattro_formaggi_at_restaurant%2C_Chalk_Farm_Road%2C_London.jpg',
     //       []
     //     )
     //   ];
